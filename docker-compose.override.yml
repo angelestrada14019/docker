@@ -1,0 +1,15 @@
+version: "3.8"
+#en el override se sobreescribe los servicios del compose padre o del que se este siguiendo tambien puede estar en git
+services:
+  app:
+    build: .
+    environment:
+    #definir variables de entorno
+      UNA_VARIABLE: "hola desde override"
+    volumes:
+    #volumen que se hace a la altura del servicio
+      - .:/usr/src
+      - /usr/src/node_modules
+      #conservar el node_modules
+    command: npx nodemon -L index.js
+    #detectar cambios en el codigo

@@ -1,14 +1,24 @@
 version: "3.8"
+#version del compose file
+
 
 services:
+#servicios que componen la aplicacion o los componentes de la aplicacion, serian cada microservicio
+#describen a un componente un servicio puede tener uno o mas componentes de la misma imagen
   app:
-    image: platziapp
+  #servicio de la aplicacion
+    image: ajea14019_app
+    # build: .
     environment:
+    #definir variables de entorno
       MONGO_URL: "mongodb://db:27017/test"
     depends_on:
+    #este contenedor depende de otro contenedor en este caso db
       - db
     ports:
-      - "3000:3000"
+    #puertos que se abren en el contenedor
+      - "3000:3000"    
 
   db:
+  #servicio de la base de datos
     image: mongo
